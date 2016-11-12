@@ -1,0 +1,8 @@
+# project dependency
+/node_modules
+
+#compile code
+/public
+
+.idea
+.DS_Store
