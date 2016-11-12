@@ -16,6 +16,6 @@ export class LogoutComponent {
 
     onLogout() {
         this.authService.logout();
-        this.router.navigate(['/landing', 'signin']);
+        this.router.navigate(['/auth', 'signin']);
     }
 }

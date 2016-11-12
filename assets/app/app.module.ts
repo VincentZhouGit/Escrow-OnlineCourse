@@ -5,14 +5,14 @@ import { HttpModule } from "@angular/http";
 
 import { AppComponent } from "./app.component";
 import {AdminComponent} from "./admin/admin.component";
-import { LandingComponent} from "./landing/authentication.component";
-import {AuthService} from "./landing/auth.service";
+import { LandingComponent} from "./auth/authentication.component";
+import {AuthService} from "./auth/auth.service";
 import {LearnerComponent} from "./learner/learner.component";
 import {routing} from "./app.routing";
-import {LogoutComponent} from "./landing/logout.component";
-import {SignupComponent} from "./landing/signup.component";
-import {SigninComponent} from "./landing/signin.component";
-import {AUTH_ROUTES} from "./landing/auth.routes";
+import {LogoutComponent} from "./auth/logout.component";
+import {SignupComponent} from "./auth/signup.component";
+import {SigninComponent} from "./auth/signin.component";
+import {AUTH_ROUTES} from "./auth/auth.routes";
 
 
 
