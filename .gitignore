@@ -2,7 +2,7 @@
 /node_modules
 
 #compile code
-/public
+/public/js
 
 .idea
 .DS_Store
