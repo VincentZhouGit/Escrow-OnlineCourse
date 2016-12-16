@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 @Component({
-    selector: 'app-header',
+    selector: '1app-header',
     template: `
         <header class="row">
             <nav class="col-md-8 col-md-offset-2">

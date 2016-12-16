@@ -8,14 +8,9 @@ import { Observable } from "rxjs";
 export class AdminService {
     constructor(private http: Http) {}
 
-    deployContract() {
-        console.log("reach here !");
-        const body = JSON.stringify({"action": "deploy a contract"});
-        console.log("reach here2 !");
-        const headers = new Headers({'Content-Type': 'application/json'});
-        console.log("reach here3 !");
-        return this.http.post('http://localhost:3000/contract', body, {headers: headers})
-            .map((response: Response) => response.json())
+    getContractInterface(){
+        return this.http.get('http://localhost:3000/contract')
+            .map((response: Response) => response.json().obj)
             .catch((error: Response) => Observable.throw(error.json()));
     }
 

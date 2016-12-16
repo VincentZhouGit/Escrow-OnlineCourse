@@ -1,0 +1,122 @@
+//geth --rpc --rpcaddr localhost --rpcport 8545 --rpccorsdomain="*" --etherbase 0 --rpcapi="web3,eth,db,net,personal"  --datadir "./data" --dev account new
+geth --rpc --rpcaddr localhost --rpcport 8545 --rpccorsdomain="*" --etherbase 0 --rpcapi="web3,eth,db,net,personal"  --datadir "./data" --dev --unlock 0 --mine --minerthreads 1
+geth --datadir "./data" --dev attach ipc:data/geth.ipc
+
+
+geth --rpc --rpcapi="web3,eth,db,net,personal" --rpcaddr="0.0.0.0" --rpccorsdomain="*"  --unlock 0,1,2 --networkid 12345 --mine --etherbase 0
+
+
+
+passpharse: xd19951995
+account 0 : "0xd522a817fe9544ad5411405138b2c0384d1c8064"
+var receiver = "0xd522a817fe9544ad5411405138b2c0384d1c8064"
+web3.eth.sendTransaction({from:web3.eth.accounts[0], to: receiver, value: web3.toWei(1, "ether")});
+reference: https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options
+
+
+//online compiler docs
+https://ethereum.github.io/browser-solidity/#version=soljson-v0.4.2+commit.af6afb04.js
+
+//useful command line:
+(1)get account balance:
+    web3.eth.getBalance(addressHexString [, defaultBlock] [, callback])
+        Example:
+            var balance = web3.eth.getBalance(web3.eth.accounts[0]);
+            console.log(balance); // instanceof BigNumber
+            console.log(balance.toString(10)); // '1000000000000'
+            console.log(balance.toNumber()); // 1000000000000
+
+
+
+
+
+--------------
+//to read the public variable directly
+uint public coursePrice;
+uint public enrollStart;
+uint public enrollEnd;
+uint public quota;
+uint public refundTime;
+
+var cE = courseEscrow.deployed()
+var provider = '0x98c44fa8013add88244cf4c7a5613c32628dcb43'
+var buyer = '0x8f0b00f4f6eb24e9e643fde0aa377abd8175d7d0'
+var contract = '0xb13f816ff7747ba091c0e89f73b7ee8c71f96892'
+
+cE.coursePrice().then(function(value){console.log("coursePrice is: " + value.toNumber())})
+cE.enrollStart().then(function(value){console.log("enrollStart is: " + value.toNumber())})
+cE.enrollEnd().then(function(value){console.log("enrollEnd is: " + value.toNumber())})
+cE.quota().then(function(value){console.log("quota is: " + value.toNumber())})
+cE.refundTime().then(function(value){console.log("refundTime is: " + value.toNumber())})
+cE.provider().then(function(value){console.log("provider is: " + value.toNumber())})
+cE.numStudents().then(function(value){console.log("numStudents is: " + value.toNumber())})
+cE.totalAmount().then(function(value){console.log("totalAmount is: " + value.toNumber())})
+
+
+//verify purchase action
+console.log("address_1(buyer) balance is: " + web3.eth.getBalance(buyer));
+console.log("contract balance is: " + web3.eth.getBalance(contract));
+
+cE.purchaseCourse.sendTransaction({from:buyer,value:500000})
+
+console.log("address_1(buyer) balance is: " + web3.eth.getBalance(buyer));
+console.log("contract balance is: " + web3.eth.getBalance(contract));
+
+//verify withdraw action
+console.log("address_1(buyer) balance is: " + web3.eth.getBalance('0x8f0b00f4f6eb24e9e643fde0aa377abd8175d7d0'));
+console.log("contract balance is: " + web3.eth.getBalance('0x3fde9ad7d224e49668eab8239108ae6b63a4d68f'));
+
+cE.withdraw.sendTransaction({from:buyer})
+
+console.log("address_1(buyer) balance is: " + web3.eth.getBalance('0x8f0b00f4f6eb24e9e643fde0aa377abd8175d7d0'));
+console.log("contract balance is: " + web3.eth.getBalance('0x3fde9ad7d224e49668eab8239108ae6b63a4d68f'));
+
+//verify receive tuitions
+console.log("address_0(provider) balance is: " + web3.eth.getBalance(provider));
+console.log("contract balance is: " + web3.eth.getBalance(contract));
+
+cE.receiveTuition.sendTransaction({from:provider})
+
+console.log("address_0(provider) balance is: " + web3.eth.getBalance(provider));
+console.log("contract balance is: " + web3.eth.getBalance(contract));
+
+
+
+
+***courseEscrow****
+address :0x3fde9ad7d224e49668eab8239108ae6b63a4d68f
+
+***accounts_info****
+Available Accounts
+=================
+[ '0x98c44fa8013add88244cf4c7a5613c32628dcb43',
+  '0x8f0b00f4f6eb24e9e643fde0aa377abd8175d7d0',
+  '0x749e3c2f13cd5f46ad1c0c7205be505f0e2d7670',
+  '0x2dbf1daa0cb563612937136ff58b73fe94e52c5f',
+  '0xe27facd0341fb200cbea1074d713aee83be02a15',
+  '0x50ea2e30b8ef7bdca42ea80eca9dcf5259a5d94e',
+  '0x17edc5565923368d88764a999159854504023199',
+  '0x4fcdfab32a73ef677753f912b2ac4a806385f1b8',
+  '0xe5f90e9e6af081cb7759d23fef0358453631ab1f',
+  '0x31d884fb9534b849d319bd1fe87d5c2d9dee1c3e' ]
+
+
+Private Keys
+==================
+(0) 12a1536d7630a1ba286b7bf1cd768fbdf3f6b331ba8b939e197a59aacdd8bddb
+(1) 8e6074d01a3bc5e17915f5f6be92757616896c8f88666eaf2ffe345e7caa42cf
+(2) 07fbfd8d6a8ae030cc5b76bc932d8b51a9ac2afe6901f244e4cfe0f41c929817
+(3) 687221757df0eadded3bf5564f75a6419c4b1d30399743f37d4957fbed9501b6
+(4) cff7fa7cda2bf8fc7b48ab675b7322abbabe4d85a5b8f3889a8b8330c8d13fe6
+(5) 1e34f490d09f22dc9b16d11f752d35819d577b3566cb73a75dd9a3dcb0619e97
+(6) 101a41cdd3570a194cca998da365118f4c7ac88c6a6d3eabf62ef1e1506a6400
+(7) ca56a010d0a703d8a5e7cd0dca523de7d7818af520fa1d540124c3d50a74297e
+(8) 2b4d94144f5c192837d5242f9196ff13a668b590470a459b739b0bd563b9b6bd
+(9) f23f01bda428441816d38fab3c2433e1c8ba0d45a6e75bc4f72cd44e4d75942c
+
+HD Wallet
+==================
+Mnemonic:      item damage ahead maze used theme olympic pistol quarter winter soap summer
+Base HD Path:  m/44'/60'/0'/0/{account_index}
+
+Listening on localhost:8545

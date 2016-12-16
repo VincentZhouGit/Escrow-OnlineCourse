@@ -13,6 +13,9 @@ import {LogoutComponent} from "./auth/logout.component";
 import {SignupComponent} from "./auth/signup.component";
 import {SigninComponent} from "./auth/signin.component";
 import {AUTH_ROUTES} from "./auth/auth.routes";
+import {HeaderComponent} from "./header/header.component";
+
+
 
 
 
@@ -21,11 +24,11 @@ import {AUTH_ROUTES} from "./auth/auth.routes";
         AppComponent,
         AdminComponent,
         LearnerComponent,
-
         LandingComponent,
         LogoutComponent,
         SignupComponent,
-        SigninComponent
+        SigninComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserModule,
